@@ -20,8 +20,9 @@
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	CLViewController* vc = [[CLViewController alloc] init];
+	self.window.rootViewController = vc;
 
-	[self.window addSubview:vc.view];
+//	[self.window addSubview:vc.view];
 	
 	[self.window makeKeyAndVisible];
 	

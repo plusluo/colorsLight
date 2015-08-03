@@ -16,4 +16,7 @@
 	NSInteger _nPos;
 }
 
+@property UILabel* infoLabel;
+@property UIButton* infoButton;
+
 @end
