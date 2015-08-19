@@ -477,6 +477,8 @@ typedef NS_ENUM (NSInteger, UIShadeStyle) {
  */
 + (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray *)colors;
 
++ (NSArray *)flatColors;
+
 #pragma mark - Chameleon Deprecated Methods as of 1.1.0
 
 /**

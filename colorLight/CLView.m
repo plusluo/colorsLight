@@ -7,6 +7,7 @@
 //
 
 #import "CLView.h"
+#import "UIColor+Chameleon.h"
 
 @implementation CLView
 
@@ -51,36 +52,39 @@
 	self.infoLabel.backgroundColor = [UIColor clearColor];
 	[self addSubview:self.infoLabel];
 	self.infoLabel.textAlignment = NSTextAlignmentCenter;
-	self.infoLabel.text = @"左右滑动手指，切换颜色";
+	self.infoLabel.text = NSLocalizedString(@"Tips", @"");
 	self.infoLabel.alpha = 0.0;
 }
 
 - (void)initColor{
-	_colorArray = [[NSArray alloc] initWithObjects:
-				   [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:1],
-				   [UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1],
-				   [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1],
-				   [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:0.1 green:0.25 blue:0.6 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
-				   [UIColor colorWithRed:0.4 green:0.5 blue:0 alpha:1],
-				   [UIColor colorWithRed:0.0 green:0.5 blue:0.2 alpha:1],
-				   [UIColor colorWithRed:0.9 green:0.5 blue:0.2 alpha:1],
-				   [UIColor colorWithRed:0 green:0.5 blue:0.9 alpha:1],
-				   nil];
+	_colorArray = [UIColor flatColors];
+//	[[NSArray alloc] initWithObjects:
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:1],
+//				   [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1],
+//				   [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:0.1 green:0.25 blue:0.6 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1],
+//				   [UIColor colorWithRed:0.4 green:0.5 blue:0 alpha:1],
+//				   [UIColor colorWithRed:0.0 green:0.5 blue:0.2 alpha:1],
+//				   [UIColor colorWithRed:0.9 green:0.5 blue:0.2 alpha:1],
+//				   [UIColor colorWithRed:0 green:0.5 blue:0.9 alpha:1],
+//				   nil];
 }
 
 - (void)showInfo{
 	[self showButton];
 	self.infoLabel.hidden = NO;
 	self.infoButton.enabled = NO;
+	self.infoLabel.textColor = [UIColor colorWithContrastingBlackOrWhiteColorOn:self.backgroundColor isFlat:NO];
+	
 	float alpha = self.infoLabel.alpha;
 	alpha = (alpha==1.0) ? 0.0 : 1.0;
 	
@@ -144,6 +148,7 @@
 		_nPos = 0;
 	}
 	self.backgroundColor = [_colorArray objectAtIndex:_nPos];
+
 }
 
 - (void)preColor{
@@ -152,6 +157,7 @@
 		_nPos = [_colorArray count] - 1;
 	}
 	self.backgroundColor = [_colorArray objectAtIndex:_nPos];
+	
 }
 
 @end

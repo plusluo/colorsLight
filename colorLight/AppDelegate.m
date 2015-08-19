@@ -22,8 +22,6 @@
 	CLViewController* vc = [[CLViewController alloc] init];
 	self.window.rootViewController = vc;
 
-//	[self.window addSubview:vc.view];
-	
 	[self.window makeKeyAndVisible];
 	
 	return YES;
